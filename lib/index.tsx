@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import WebView, { WebViewMessageEvent, WebViewNavigation } from 'react-native-webview';
 
-export interface DocumentViewLoadEvent extends WebViewNavigation {}
+export interface DocumentViewEvent extends WebViewNavigation {}
 
 export interface DocumentViewProps {
   uri: string;
   style?: StyleProp<ViewStyle>;
-  onLoad?: (event: DocumentViewLoadEvent) => void;
+  onLoad?: (event: DocumentViewEvent) => void;
+  onError?: (event: DocumentViewEvent) => void;
   scale?:
     | number
     | {
@@ -23,7 +24,7 @@ export interface DocumentViewProps {
       };
 }
 
-export default function DocumentView({ uri, scale, controls = true, style, onLoad }: DocumentViewProps) {
+export default function DocumentView({ uri, scale, controls = true, style, onLoad, onError }: DocumentViewProps) {
   const [status, setStatus] = useState('loading');
   const [renderKey, setRenderKey] = useState(Date.now());
   const [adjustScaleHack, setAdjustScaleHack] = useState(0);
@@ -64,8 +65,14 @@ export default function DocumentView({ uri, scale, controls = true, style, onLoa
   `;
 
   const scripts = `
-    const $loader = document.querySelector('[role="status"]:not(.drive-viewer-msg-loading)');
-    window.ReactNativeWebView.postMessage($loader ? 'ready' : 'reload');
+    const $info = document.querySelector('#drive-active-item-info') || '{}';
+
+    if (!$info) {
+      window.ReactNativeWebView.postMessage('reload');
+    } else {
+      const mimeType = JSON.parse($info.innerText).mimeType;
+      window.ReactNativeWebView.postMessage(mimeType ? 'ready' : 'error');
+    }
 
     const meta = document.createElement('meta');
     meta.setAttribute('content', 'width=device-width, initial-scale=${scaleObj.initial}, minimum-scale=${scaleObj.min}, maximum-scale=${scaleObj.max}');
@@ -79,8 +86,13 @@ export default function DocumentView({ uri, scale, controls = true, style, onLoa
   `;
 
   function handleLoad(e: WebViewNavigation) {
-    if (status !== 'ready') return;
-    onLoad?.(e);
+    if (status === 'ready') {
+      onLoad?.(e);
+    }
+
+    if (status === 'error') {
+      onError?.(e);
+    }
   }
 
   function handleMessage({ nativeEvent }: WebViewMessageEvent) {
