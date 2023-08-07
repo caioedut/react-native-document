@@ -1,0 +1,43 @@
+{
+  "name": "react-native-document",
+  "version": "0.0.0",
+  "keywords": [
+    "react",
+    "react-native",
+    "document",
+    "pdf",
+    "doc",
+    "xls",
+    "ppt"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/caioedut/react-native-document",
+  "author": {
+    "name": "Caio Teixeira",
+    "email": "caioedut@gmail.com"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "tsx scripts/test.ts",
+    "build": "tsx scripts/build.ts",
+    "publish:stable": "tsx scripts/publish.ts"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.17",
+    "pmex": "^0.0.35",
+    "prettier": "^3.0.0",
+    "react": "^18.2.0",
+    "react-native": "^0.72.3",
+    "react-native-webview": "^13.3.0",
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.6"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "react-native-webview": "*"
+  }
+}
