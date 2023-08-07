@@ -1,78 +1,58 @@
-# React Native HTML Component
+# React Native Document
 
-[![npm version](https://badge.fury.io/js/react-native-html-component.svg)](https://badge.fury.io/js/react-native-html-component)
+[![npm version](https://badge.fury.io/js/react-native-document.svg)](https://badge.fury.io/js/react-native-document)
 
-This allows you to render HTML content within your application. It accepts a string of HTML content as a prop and renders it within a WebView component. This makes it easy to integrate rich HTML content into your React Native application.
+This allows you to render documents like PDF, DOC, XLS and PPT.
 
 ## Installation
 
 ### Expo
 
 ```shell
-expo install react-native-html-component react-native-webview
+expo install react-native-document react-native-webview
 ```
 
 ### Other
 
 ```shell
-yarn install react-native-html-component react-native-webview
+yarn install react-native-document react-native-webview
 ```
 
 ## Usage
 
 ```jsx
-import Html from 'react-native-html-component';
+import DocumentView from 'react-native-document';
 
 export default function App() {
     return (
-        <Html html="<p>Hello World!</p>" />
+        <DocumentView uri="https://..." />
     )
 }
 ```
 
 ## Props
 
-### `html`
+### `uri`
 
-A string that represents the HTML content to be rendered.
-
-➤ Type: **`string`** <br/>
-
----
-
-### `allowTextSelection`
-
-An optional boolean that determines whether text selection is allowed.
-
-➤ Type: **`boolean`** <br/>
-➤ Default: **`false`** <br/>
-
----
-
-### `backgroundColor`
-
-An optional string that sets the background color of the root html.
+The URI of the file to be rendered.
 
 ➤ Type: **`string`** <br/>
-➤ Default: **`'transparent'`** <br/>
 
 ---
 
-### `color`
+### `scale`
 
-An optional string that sets the text color of the root html.
+An optional scale value or object that determines the initial, minimum, and maximum scale of the document. If a number is provided, it sets for all properties. If an object is provided, it can have optional properties `initial`, `min`, and `max` to set the initial, minimum, and maximum scale, respectively.
 
-➤ Type: **`string`** <br/>
-➤ Default: **`'#000000'`** <br/>
+➤ Type: **`number` | `{ initial?: number; min?: number; max?: number }`** <br/>
 
 ---
 
-### `fontSize`
+### `controls`
 
-An optional number that sets the font size of the root html.
+An optional boolean value or object that determines whether controls are displayed and which controls are displayed. If a boolean value is provided, it determines whether all controls are displayed. If an object is provided, it can have optional properties `page` and `zoom` to determine whether page and zoom controls are displayed, respectively.
 
-➤ Type: **`number`** <br/>
-➤ Default: **`16`** <br/>
+➤ Type: **`boolean` | `{ page?: boolean; zoom?: boolean }`** <br/>
 
 ---
 
@@ -81,3 +61,11 @@ An optional number that sets the font size of the root html.
 An optional StyleProp object that can be used to apply custom styles to the component.
 
 ➤ Type: **`StyleProp<ViewStyle>`** <br/>
+
+---
+
+### `onLoad`
+
+An optional callback function that is called when the document is loaded. It receives an event object of type `DocumentViewLoadEvent`.
+
+➤ Type: **`(event: DocumentViewLoadEvent) => void`** <br/>

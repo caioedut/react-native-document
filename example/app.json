@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "owner": "caioedut",
+    "name": "react-native-document-example",
+    "slug": "react-native-document-example",
+    "orientation": "portrait",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+    }
+  }
+}

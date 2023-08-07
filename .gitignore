@@ -24,6 +24,7 @@ next-env.d.ts
 # temp
 .eslintcache
 .DS_Store
+.expo
 build/
 dist/
 out/
