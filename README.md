@@ -66,6 +66,14 @@ An optional StyleProp object that can be used to apply custom styles to the comp
 
 ### `onLoad`
 
-An optional callback function that is called when the document is loaded. It receives an event object of type `DocumentViewLoadEvent`.
+An optional callback function that is called when the document is loaded. It receives an event object of type `DocumentViewEvent`.
 
-➤ Type: **`(event: DocumentViewLoadEvent) => void`** <br/>
+➤ Type: **`(event: DocumentViewEvent) => void`** <br/>
+
+---
+
+### `onError`
+
+An optional callback function that is called when the document cannot be loaded. It receives an event object of type `DocumentViewEvent`.
+
+➤ Type: **`(event: DocumentViewEvent) => void`** <br/>
