@@ -24,7 +24,7 @@ export interface DocumentViewProps {
       };
 }
 
-export default function DocumentView({ uri, scale, controls = true, style, onLoad, onError }: DocumentViewProps) {
+export default function DocumentView({ uri, scale = 1, controls = true, style, onLoad, onError }: DocumentViewProps) {
   const [status, setStatus] = useState('loading');
   const [renderKey, setRenderKey] = useState(Date.now());
   const [adjustScaleHack, setAdjustScaleHack] = useState(0);
@@ -38,7 +38,7 @@ export default function DocumentView({ uri, scale, controls = true, style, onLoa
   const scaleObj = {
     initial: typeof scale === 'number' ? scale : 1,
     min: typeof scale === 'number' ? scale : 1,
-    max: typeof scale === 'number' ? scale : 2,
+    max: typeof scale === 'number' ? scale : 1,
     ...(typeof scale === 'number' ? {} : scale),
   };
 
