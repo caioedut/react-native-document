@@ -10,7 +10,17 @@
     "ios": {
       "supportsTablet": true
     },
-    "android": {
+    "android": {},
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/26fb03a5-450e-416b-9af1-e37b24e3962d"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "26fb03a5-450e-416b-9af1-e37b24e3962d"
+      }
     }
   }
 }
