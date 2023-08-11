@@ -104,7 +104,8 @@ export default function DocumentView({ uri, scale = 1, controls = true, style, o
 
     if (status === 'ready') {
       // Hack for iOS: PAGE SCALE
-      setTimeout(() => setAdjustScaleHack((current) => Number(!current)), 500);
+      setTimeout(() => setAdjustScaleHack((current) => Number(!current)), 200);
+      setTimeout(() => setAdjustScaleHack((current) => Number(!current)), 400);
     }
 
     setStatus(status);
