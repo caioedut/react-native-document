@@ -1,8 +1,8 @@
 # React Native Document
 
-[![npm version](https://badge.fury.io/js/react-native-document.svg)](https://badge.fury.io/js/react-native-document)
-
 This allows you to render documents like PDF, DOC, XLS and PPT.
+
+[![npm version](https://badge.fury.io/js/react-native-document.svg)](https://badge.fury.io/js/react-native-document)
 
 ## Installation
 
@@ -15,7 +15,12 @@ expo install react-native-document react-native-webview
 ### Other
 
 ```shell
-yarn install react-native-document react-native-webview
+npm install react-native-document react-native-webview
+# OR
+yarn add react-native-document react-native-webview
+#OR
+pnpm add react-native-document react-native-webview
+
 ```
 
 ## Usage
