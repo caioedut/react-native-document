@@ -65,7 +65,7 @@ export default function DocumentView({ uri, scale = 1, controls = true, style, o
   `;
 
   const scripts = `
-    const $info = document.querySelector('#drive-active-item-info') || '{}';
+    const $info = document.querySelector('#drive-active-item-info');
 
     if (!$info) {
       window.ReactNativeWebView.postMessage('reload');
