@@ -69,11 +69,17 @@ An optional StyleProp object that can be used to apply custom styles to the comp
 
 ---
 
+### `renderLoading`
+
+➤ Type: **`boolean` | `{ page?: boolean; zoom?: boolean }`** <br/>
+
+---
+
 ### `onLoad`
 
-An optional callback function that is called when the document is loaded. It receives an event object of type `DocumentViewEvent`.
+Function that returns a loading indicator.
 
-➤ Type: **`(event: DocumentViewEvent) => void`** <br/>
+➤ Type: **`() => React.ReactElement`** <br/>
 
 ---
 

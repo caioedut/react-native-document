@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import WebView, { WebViewMessageEvent, WebViewNavigation } from 'react-native-webview';
 
@@ -7,6 +7,7 @@ export interface DocumentViewEvent extends WebViewNavigation {}
 export interface DocumentViewProps {
   uri: string;
   style?: StyleProp<ViewStyle>;
+  renderLoading?: () => ReactElement;
   onLoad?: (event: DocumentViewEvent) => void;
   onError?: (event: DocumentViewEvent) => void;
   scale?:
@@ -24,7 +25,15 @@ export interface DocumentViewProps {
       };
 }
 
-export default function DocumentView({ uri, scale = 1, controls = true, style, onLoad, onError }: DocumentViewProps) {
+export default function DocumentView({
+  uri,
+  scale = 1,
+  controls = true,
+  style,
+  renderLoading,
+  onLoad,
+  onError,
+}: DocumentViewProps) {
   const [status, setStatus] = useState('loading');
   const [renderKey, setRenderKey] = useState(Date.now());
   const [adjustScaleHack, setAdjustScaleHack] = useState(0);
@@ -125,6 +134,7 @@ export default function DocumentView({ uri, scale = 1, controls = true, style, o
       source={{ uri: `https://docs.google.com/viewer?embedded=true&url=${encodeURIComponent(uri)}` }}
       style={style}
       containerStyle={{ borderWidth: adjustScaleHack, borderColor: 'transparent' }}
+      renderLoading={renderLoading}
       // @ts-expect-error
       onLoad={handleLoad}
       onMessage={handleMessage}
