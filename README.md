@@ -37,7 +37,7 @@ export default function App() {
 
 ## Props
 
-### `uri`
+`uri`
 
 The URI of the file to be rendered.
 
@@ -45,7 +45,7 @@ The URI of the file to be rendered.
 
 ---
 
-### `scale`
+`scale`
 
 An optional scale value or object that determines the initial, minimum, and maximum scale of the document. If a number is provided, it sets for all properties. If an object is provided, it can have optional properties `initial`, `min`, and `max` to set the initial, minimum, and maximum scale, respectively.
 
@@ -53,7 +53,7 @@ An optional scale value or object that determines the initial, minimum, and maxi
 
 ---
 
-### `controls`
+`controls`
 
 An optional boolean value or object that determines whether controls are displayed and which controls are displayed. If a boolean value is provided, it determines whether all controls are displayed. If an object is provided, it can have optional properties `page` and `zoom` to determine whether page and zoom controls are displayed, respectively.
 
@@ -61,7 +61,7 @@ An optional boolean value or object that determines whether controls are display
 
 ---
 
-### `style`
+`style`
 
 An optional StyleProp object that can be used to apply custom styles to the component.
 
@@ -69,21 +69,21 @@ An optional StyleProp object that can be used to apply custom styles to the comp
 
 ---
 
-### `renderLoading`
-
-➤ Type: **`boolean` | `{ page?: boolean; zoom?: boolean }`** <br/>
-
----
-
-### `onLoad`
-
-Function that returns a loading indicator.
+`renderLoading`
 
 ➤ Type: **`() => React.ReactElement`** <br/>
 
 ---
 
-### `onError`
+`onLoad`
+
+Function that returns a loading indicator.
+
+➤ Type: **`(event: DocumentViewEvent) => void`** <br/>
+
+---
+
+`onError`
 
 An optional callback function that is called when the document cannot be loaded. It receives an event object of type `DocumentViewEvent`.
 
