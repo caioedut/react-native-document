@@ -18,8 +18,10 @@ expo install react-native-document react-native-webview
 npm install react-native-document react-native-webview
 # OR
 yarn add react-native-document react-native-webview
-#OR
+# OR
 pnpm add react-native-document react-native-webview
+# OR
+bun add react-native-document react-native-webview
 
 ```
 
@@ -71,13 +73,13 @@ An optional StyleProp object that can be used to apply custom styles to the comp
 
 `renderLoading`
 
+Function that returns a loading indicator.
+
 ➤ Type: **`() => React.ReactElement`** <br/>
 
 ---
 
 `onLoad`
-
-Function that returns a loading indicator.
 
 ➤ Type: **`(event: DocumentViewEvent) => void`** <br/>
 
